@@ -2,19 +2,19 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
   first_name: {
-    type: String,
+    type: mongoose.Schema.Types.String,
     required: true,
   },
   last_name: {
-    type: String,
+    type: mongoose.Schema.Types.String,
     required: true,
   },
   birthday: {
-    type: Date,
+    type: mongoose.Schema.Types.Date,
     required: true,
   },
   marital_status: {
-    type: String,
+    type: mongoose.Schema.Types.String,
     enum: ["single", "married", "divorced", "widowed"],
     required: true,
   },
