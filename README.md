@@ -2,7 +2,7 @@
 
 ## Description
 
-**Cost Manager** is a RESTful web service developed using Node.js, Express.js, and MongoDB. It enables users to manage their personal expenses efficiently by adding cost entries, retrieving monthly reports, and managing user data. The backend is designed for integration with front-end or external client apps.
+This project is a RESTful web service developed using Node.js, Express.js, and MongoDB. It enables users to manage their personal expenses efficiently by adding cost entries, retrieving monthly reports, and managing user data.
 
 ## Features
 
@@ -16,19 +16,19 @@
 
 ### Prerequisites
 
-- Node.js (v18+)
+- Node.js
 - npm
-- MongoDB Atlas or local MongoDB instance
+- MongoDB Atlas
 
 ### Installation
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/nodejs_final_project.git
+   git clone https://github.com/yourusername/HIT_NodeJS_Final_Project_2025.git
    ```
 2. Navigate to the project directory:
    ```bash
-   cd nodejs_final_project
+   cd HIT_NodeJS_Final_Project_2025
    ```
 3. Install dependencies:
    ```bash
