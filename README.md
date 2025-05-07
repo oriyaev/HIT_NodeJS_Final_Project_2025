@@ -64,9 +64,15 @@ Send a JSON body with the following fields:
 
 ### Get Monthly Report
 
-**GET** `/api/report?user_id=123123&month=5&year=2025`
+**GET** `/api/report?user_id=123123&year=2025&month=5`
 
 Returns a categorized report of the user's expenses for the given month.
+
+### Get User Details
+
+**GET** `/api/users/123123`
+
+Returns the user's first name, last name, and total expenses.
 
 ### Get Developer Info
 
