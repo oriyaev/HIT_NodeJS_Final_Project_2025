@@ -36,7 +36,7 @@ This project is a RESTful web service developed using Node.js, Express.js, and M
    ```
 4. Create an `.env` file with your MongoDB connection string:
    ```
-   DB_URI=mongodb+srv://<your_mongodb_uri>
+   MONGODB_URI=mongodb+srv://<your_mongodb_uri>
    ```
 5. Start the server:
    ```bash
