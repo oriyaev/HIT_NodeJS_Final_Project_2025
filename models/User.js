@@ -1,20 +1,25 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
+  id: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   first_name: {
-    type: mongoose.Schema.Types.String,
+    type: String,
     required: true,
   },
   last_name: {
-    type: mongoose.Schema.Types.String,
+    type: String,
     required: true,
   },
   birthday: {
-    type: mongoose.Schema.Types.Date,
+    type: Date,
     required: true,
   },
   marital_status: {
-    type: mongoose.Schema.Types.String,
+    type: String,
     enum: ["single", "married", "divorced", "widowed"],
     required: true,
   },
