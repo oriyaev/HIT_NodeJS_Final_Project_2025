@@ -52,19 +52,19 @@ This project is a RESTful web service developed using Node.js, Express.js, and M
 Send a JSON body with the following fields:
 ```json
 {
-  "user_id": "123456789",
-  "description": "Lunch",
+  "description": "Grocery shopping",
   "category": "food",
-  "sum": "45",
-  "day": "4",
+  "user_id": "123123",
+  "sum": 150,
+  "year": "2025",
   "month": "5",
-  "year": "2025"
+  "day": "7"
 }
 ```
 
 ### Get Monthly Report
 
-**GET** `/api/report?user_id=123456789&month=5&year=2025`
+**GET** `/api/report?user_id=123123&month=5&year=2025`
 
 Returns a categorized report of the user's expenses for the given month.
 
