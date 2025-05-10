@@ -14,7 +14,7 @@ router.post("/add", costController.addCost);
 router.get("/report", reportController.getReport);
 
 // Route to get user details
-router.get("/users/:user_id", userController.getUserDetails);
+router.get("/users/:id", userController.getUserDetails);
 
 // Route to get team members
 router.get("/about", aboutController.getTeamMembers);

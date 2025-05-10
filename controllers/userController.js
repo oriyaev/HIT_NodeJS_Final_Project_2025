@@ -2,11 +2,10 @@ const User = require("../models/User");
 const Cost = require("../models/Cost");
 
 exports.getUserDetails = async (req, res) => {
-  const { user_id } = req.params; // Use user_id from the route params
+  const { id } = req.params;
 
   try {
-    // Find the user by their user_id
-    const user = await User.findOne({ id: user_id });
+    const user = await User.findOne({ id: id });
 
     if (!user) {
       return res.status(404).json({ error: "User not found" });
@@ -14,8 +13,8 @@ exports.getUserDetails = async (req, res) => {
 
     // Aggregate the total cost for the user
     const totalCost = await Cost.aggregate([
-      { $match: { user_id: user_id } }, // Match the user_id
-      { $group: { _id: null, total: { $sum: "$sum" } } }, // Sum up the costs
+      { $match: { userid: id } },
+      { $group: { _id: null, total: { $sum: "$sum" } } },
     ]);
 
     const total = totalCost.length > 0 ? totalCost[0].total : 0;

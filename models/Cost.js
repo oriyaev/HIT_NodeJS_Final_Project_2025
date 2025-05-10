@@ -12,7 +12,7 @@ const costSchema = new mongoose.Schema({
     enum: costCategories,
     required: true,
   },
-  user_id: {
+  userid: {
     type: String,
     ref: "User",
     required: true,
