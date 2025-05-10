@@ -54,7 +54,7 @@ Send a JSON body with the following fields:
 {
   "description": "Grocery shopping",
   "category": "food",
-  "user_id": "123123",
+  "userid": "123123",
   "sum": 150,
   "year": "2025",
   "month": "5",
@@ -64,7 +64,7 @@ Send a JSON body with the following fields:
 
 ### Get Monthly Report
 
-**GET** `/api/report?user_id=123123&year=2025&month=5`
+**GET** `/api/report?id=123123&year=2025&month=5`
 
 Returns a categorized report of the user's expenses for the given month.
 
