@@ -1,15 +1,21 @@
 const Cost = require("../models/Cost");
+const User = require("../models/User");
 
 exports.getReport = async (req, res) => {
-  const { user_id, year, month } = req.query;
+  const { id, year, month } = req.query;
 
-  if (!user_id || !year || !month) {
-    return res.status(400).json({ error: "Missing user_id, year, or month" });
+  if (!id || !year || !month) {
+    return res.status(400).json({ error: "Missing id, year, or month" });
   }
 
   try {
+    const user = await User.findOne({ id: id });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
     const costs = await Cost.find({
-      user_id: user_id,
+      userid: id,
       year: year,
       month: month,
     });
@@ -33,8 +39,9 @@ exports.getReport = async (req, res) => {
       });
     });
 
+    // Prepare the report
     const report = {
-      user_id: user_id,
+      userid: id,
       year: year,
       month: month,
       costs: [

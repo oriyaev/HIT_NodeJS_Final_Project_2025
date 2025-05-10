@@ -7,31 +7,27 @@ function isValidNumberString(value) {
 
 exports.addCost = async (req, res) => {
   try {
-    const { description, category, user_id, sum, year, month, day } = req.body;
+    const { description, category, userid, sum, year, month, day } = req.body;
 
-    // Check for missing essential fields
-    if (!description || !category || !user_id || sum === undefined) {
+    // Validate the data
+    if (!description || !category || !userid || sum === undefined) {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
-    // Validate sum separately (allowing it to be number or string initially)
     if (!(typeof sum === "number" || isValidNumberString(sum))) {
       return res
         .status(400)
         .json({ error: "Sum must be a valid positive number" });
     }
 
-    // Parse values (whether user sends strings or numbers)
     const parsedSum = Number.parseInt(sum, 10);
 
     if (parsedSum < 0) {
       return res.status(400).json({ error: "Sum cannot be negative" });
     }
 
-    // Handle date fields
     let parsedYear, parsedMonth, parsedDay;
     if (year !== undefined && month !== undefined && day !== undefined) {
-      // Validate that year, month, day are valid integers
       if (
         !isValidNumberString(year) ||
         !isValidNumberString(month) ||
@@ -46,7 +42,6 @@ exports.addCost = async (req, res) => {
       parsedMonth = Number.parseInt(month, 10);
       parsedDay = Number.parseInt(day, 10);
 
-      // Validate ranges
       if (parsedMonth < 1 || parsedMonth > 12) {
         return res
           .status(400)
@@ -61,14 +56,12 @@ exports.addCost = async (req, res) => {
           .json({ error: "Year must be between 1900 and 2100" });
       }
     } else {
-      // No date provided
       const currentDate = new Date();
       parsedYear = currentDate.getFullYear();
       parsedMonth = currentDate.getMonth() + 1;
       parsedDay = currentDate.getDate();
     }
 
-    // Validate category and description
     const allowedCategories = [
       "food",
       "health",
@@ -85,11 +78,11 @@ exports.addCost = async (req, res) => {
       return res.status(400).json({ error: "Invalid category provided" });
     }
 
-    // Create and save the new Cost document
+    // Create and save the new Cost document after validation
     const newCost = new Cost({
       description: description.trim(),
       category,
-      user_id,
+      userid,
       sum: parsedSum,
       year: parsedYear,
       month: parsedMonth,
