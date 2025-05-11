@@ -2,7 +2,7 @@ const Cost = require("../models/Cost");
 
 // Helper function to validate integer strings
 function isValidNumberString(value) {
-  return typeof value === "string" || /^\d+$/.test(value);
+  return /^\d+$/.test(value);
 }
 
 exports.addCost = async (req, res) => {
